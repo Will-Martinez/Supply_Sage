@@ -1,4 +1,7 @@
 import express, { Express } from "express";
+import DatabaseConfig from "../Database/DatabaseConfig";
+import DatabaseConnection from "../Database/DatabaseConnection";
+import 'dotenv/config'
 
 export default class Server {
 
@@ -8,6 +11,12 @@ export default class Server {
 
     constructor (port: number) {
         this.port = port;
+    }
+
+    private connectDatabase(): void {
+        const dbConfig: DatabaseConfig = DatabaseConfig.getDatabaseConfig();
+        const connection: DatabaseConnection = new DatabaseConnection(dbConfig);
+        connection.BuildConnection();
     }
 
     private defineMiddlewares(): void {
@@ -21,6 +30,7 @@ export default class Server {
     }
 
     public Start(): void {
+        this.connectDatabase();
         this.defineMiddlewares();
         this.OpenServer();
     }

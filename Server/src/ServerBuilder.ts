@@ -1,4 +1,4 @@
-import Server from "./Config/Server";
+import Server from "./ServerConfig/Server";
 
 class ServerBuilder {
 
