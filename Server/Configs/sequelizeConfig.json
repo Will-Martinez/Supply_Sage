@@ -2,7 +2,7 @@
     "development": {
       "username": "postgres",
       "password": "root",
-      "database": "open_ticket",
+      "database": "supply_sage",
       "host": "localhost",
       "dialect": "postgres"
     }

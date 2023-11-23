@@ -1,11 +1,10 @@
 {
     "compilerOptions": {
-      "strict": true,
       "target": "ESNext",
       "module": "commonjs",
       "esModuleInterop": true,
       "outDir": "./dist",
-      "sourceMap": true
+      "sourceMap": true,
     },
-    "exclude": ["node_modules"]
+    "exclude": ["node_modules"],
   }
