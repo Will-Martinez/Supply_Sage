@@ -1,8 +1,8 @@
 import Server from "./Config/Server";
 
-class AppBuilder {
+class ServerBuilder {
 
-    private local: string = "[ APP-BUILDER ]";
+    private local: string = "[ SERVER-BUILDER ]";
 
     public StartServer(port: number): void {
 
@@ -11,5 +11,5 @@ class AppBuilder {
     }
 }
 
-const app: AppBuilder = new AppBuilder();
-app.StartServer(3000);
+const serverBuilder: ServerBuilder = new ServerBuilder();
+serverBuilder.StartServer(3000);
