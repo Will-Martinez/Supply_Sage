@@ -17,10 +17,6 @@ export default class SchoolSupply extends StationaryProduct{
         this.available = available
     }
 
-    public getCategory(): string {
-        return this.category;
-    }
-
     public toDatabaseObject(): object {
         return {
             category: this.category,
