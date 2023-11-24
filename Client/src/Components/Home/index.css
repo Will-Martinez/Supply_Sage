@@ -1,0 +1,22 @@
+.card-deck:has( > .card:hover ) .card:not(:hover){
+    opacity: .5;
+  }
+
+  .card:hover {
+    transform: scale(1.1);
+  }
+  .card {
+    transition: transform 0.5s;
+  }
+  
+  .card-deck {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat( 3, 1fr);
+    padding: 1rem;
+    width: 50rem;
+  }
+
+  .content {
+    align-items: center;
+  }
