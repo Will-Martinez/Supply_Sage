@@ -1,7 +1,7 @@
 import { ProductModelInitializer } from "./Entities/Products/Products";
 import { Sequelize } from "sequelize";
 
-export default class ModelBuilder {
+export default class ModelsInitializer {
     private local: string = "[ MODEL-BUILD ]";
     private sequelizeClient: Sequelize;
 
@@ -9,11 +9,11 @@ export default class ModelBuilder {
         this.sequelizeClient = sequelizeClient
     }
 
-    private StartBuilder(): void {
-        ProductModelInitializer.InitializeUserModel(this.sequelizeClient);
+    private initialize(): void {
+        ProductModelInitializer.initializeProductModel(this.sequelizeClient);
     }
 
-    public BuildModels(): void {
-        this.StartBuilder();
+    public initializeModels(): void {
+        this.initialize();
     }
 }

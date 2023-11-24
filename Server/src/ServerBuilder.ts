@@ -4,7 +4,7 @@ class ServerBuilder {
 
     private local: string = "[ SERVER-BUILDER ]";
 
-    public StartServer(port: number): void {
+    public startServer(port: number): void {
 
         const server: Server = new Server(port);
         server.Start();
@@ -12,4 +12,4 @@ class ServerBuilder {
 }
 
 const serverBuilder: ServerBuilder = new ServerBuilder();
-serverBuilder.StartServer(3000);
+serverBuilder.startServer(3000);

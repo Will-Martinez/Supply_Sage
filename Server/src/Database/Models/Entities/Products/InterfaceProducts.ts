@@ -2,11 +2,11 @@ import { Optional } from "sequelize"
 
 export interface ProductsAttr {
     id: number,
-    categoryId: number,
+    category: string,
     productName: string,
     amount: number,
     price: number,
     available: boolean
 }
 
-export interface ProductCreationAttr extends Optional<ProductsAttr, "id">{};
+export interface ProductCreationAttr extends Optional<ProductsAttr, "id"> {};

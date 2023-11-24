@@ -9,10 +9,9 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true,
       },
-      categoryId: {
-        type: DataTypes.INTEGER,
+      category: {
+        type: DataTypes.STRING(100),
         allowNull: false,
-        references: { model: "categories", key: "id" },
       },
       productName: {
         type: DataTypes.STRING(100),

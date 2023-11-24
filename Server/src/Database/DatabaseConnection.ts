@@ -10,20 +10,21 @@ export default class DatabaseConnection {
         this.dbConfig = dbConfig;
     }
 
-    private Connect(): void {
+    private connect(): void {
         try {
             this.sequelizeClient = new Sequelize(this.dbConfig);
+            console.log(`${this.local} Connected.`);
         } catch (error) {
             console.error(`${this.local} Failed trying to connect database: ${error}`);
             return;
         }
     }
 
-    public GetClientSequelize(): Sequelize {
+    public getClientSequelize(): Sequelize {
         return this.sequelizeClient;
     }
 
-    public BuildConnection(): void {
-        this.Connect();
+    public buildConnection(): void {
+        this.connect();
     }
 }

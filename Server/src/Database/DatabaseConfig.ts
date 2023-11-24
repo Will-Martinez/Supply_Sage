@@ -9,7 +9,7 @@ export default class DatabaseConfig {
             database: process.env.DB_NAME,
             logging: false,
             define: {
-                timestamps: true,
+                timestamps: false,
             }
         }
     }

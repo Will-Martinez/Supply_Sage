@@ -8,7 +8,7 @@ export class ProductModel extends Model<ProductsAttr, ProductCreationAttr> {};
 
 export class ProductModelInitializer {
 
-    static InitializeUserModel(sequelize: Sequelize): void {
+    static initializeProductModel(sequelize: Sequelize): void {
         ProductModel.init({
             id: {
                 type: DataTypes.INTEGER,
@@ -16,9 +16,9 @@ export class ProductModelInitializer {
                 autoIncrement: true,
                 primaryKey: true
             },
-            categoryId: {
-                type: DataTypes.INTEGER,
-                references: { model: "categories", key: "id" }
+            category: {
+                type: DataTypes.STRING(100),
+                allowNull: false,
             },
             productName: {
                 type: DataTypes.STRING(100),

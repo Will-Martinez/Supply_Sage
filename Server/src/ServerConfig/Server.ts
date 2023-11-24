@@ -1,9 +1,12 @@
 import express, { Express } from "express";
 import DatabaseConfig from "../Database/DatabaseConfig";
 import DatabaseConnection from "../Database/DatabaseConnection";
-import ModelBuilder from "../Database/Models/ModelsBuilder";
+import ModelsInitializer from "../Database/Models/ModelsInitializer";
+import ProductRoutes from "../API/Routes/ProductRoutes";
 import 'dotenv/config'
 import { Sequelize } from "sequelize";
+
+const productRoutes: ProductRoutes = new ProductRoutes();
 
 export default class Server {
 
@@ -15,24 +18,25 @@ export default class Server {
         this.port = port;
     }
 
-    private StartModelsBuilder(sequelizeClient: Sequelize): void {
-        const modelBuilder: ModelBuilder = new ModelBuilder(sequelizeClient);
-        modelBuilder.BuildModels();
+    private startModelsInitializer(sequelizeClient: Sequelize): void {
+        const modelInitializer: ModelsInitializer = new ModelsInitializer(sequelizeClient);
+        modelInitializer.initializeModels();
     }
 
     private connectDatabase(): void {
-        const dbConfig: DatabaseConfig = DatabaseConfig.getDatabaseConfig();
+        const dbConfig: object = DatabaseConfig.getDatabaseConfig();
         const connection: DatabaseConnection = new DatabaseConnection(dbConfig);
-        const sequelizeClient: Sequelize = connection.GetClientSequelize();
-        connection.BuildConnection();
-        this.StartModelsBuilder(sequelizeClient);
+        connection.buildConnection();
+        const sequelizeClient: Sequelize = connection.getClientSequelize();
+        this.startModelsInitializer(sequelizeClient);
     }
 
     private defineMiddlewares(): void {
         this.server.use(express.json());
+        this.server.use(productRoutes.MapRoutes());
     }
 
-    private OpenServer(): void {
+    private openServer(): void {
         this.server.listen(this.port, () => {
             console.log(`${this.local} Runing on port ${this.port}`);
         });
@@ -41,6 +45,6 @@ export default class Server {
     public Start(): void {
         this.connectDatabase();
         this.defineMiddlewares();
-        this.OpenServer();
+        this.openServer();
     }
 }
