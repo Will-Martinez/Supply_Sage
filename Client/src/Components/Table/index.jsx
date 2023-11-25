@@ -1,106 +1,164 @@
 import DataTable from "react-data-table-component";
 import styled from "styled-components";
-import React from "react";
-import "./index.css"
-const DataTableStyled = styled(DataTable)``;
+import React, { useState, useEffect } from "react";
+import GetProducts from "../API/Services/Products/GetProducts";
+import ProductModal from "../ProductModal";
+import "./index.css";
 
-function handleButtonClick(row) {
-    console.log("Row data: ", row);
+const DataTableStyled = styled(DataTable)("");
+
+function ShowRowData(row) {
+  console.log("Row data: ", row);
+}
+
+function ShowModal () {
+  return (
+    <ProductModal />
+  )
+}
+
+async function GetProductsData() {
+  try {
+    const response = await GetProducts();
+    return response.data.objectResult;
+  } catch (error) {
+    console.error(error);
+    throw error;
   }
-  
-  function SetPendingTime() {
-    const [pending, setPending] = React.useState(true);
-    const [rows, setRows] = React.useState([]);
+}
 
-    React.useEffect(() => {
-      const timeout = setTimeout(() => {
-        setRows(data);
-        setPending(false);
-      }, 3000);
-      return () => clearTimeout(timeout);
-    }, []);
-  }
+function ShowSearchField() {
+  const searchField = document.getElementById("search_input");
+  searchField.style.display = "block";
+}
 
-  function TableColumns() {
-    return [
-      {
-        cell: (row) => (
+function TableColumns() {
+  return [
+    {
+      cell: (row) => (
+        <div className="buttons">
           <button
             className="button is-primary is-rounded is-small is-outlined"
-            onClick={() => handleButtonClick(row)}
+            onClick={() => ShowRowData(row)}
           >
             Action
           </button>
-        ),
-        ignoreRowClick: true,
-        allowOverflow: true,
-        button: true,
-      },
-      {
-        name: "Category",
-        selector: (row) => row.category,
-        sortable: true,
-      },
-      {
-        name: "Product Name",
-        selector: (row) => row.productName,
-        sortable: true,
-      },
-      {
-        name: "Amount",
-        selector: (row) => row.amount,
-        sortable: true,
-      },
-      {
-        name: "Price",
-        selector: (row) => row.price,
-        sortable: true,
-      },
-      {
-        name: "Available",
-        selector: (row) => row.available,
-        sortable: true,
-      }
-    ];
-  }
-  
-  function LoadTable() {
+        </div>
+      ),
+      ignoreRowClick: true,
+      allowOverflow: true,
+      button: true,
+    },
+    {
+      name: "Category",
+      selector: (row) => row.category,
+      sortable: true,
+    },
+    {
+      name: "Product Name",
+      selector: (row) => row.productName,
+      sortable: true,
+    },
+    {
+      name: "Amount",
+      selector: (row) => row.amount,
+      sortable: true,
+    },
+    {
+      name: "Price",
+      selector: (row) => row.price,
+      sortable: true,
+    },
+    {
+      name: "Available",
+      selector: (row) => (row.available ? "Yes" : "No"),
+      sortable: true,
+    },
+  ];
+}
 
-    const data = [
-      {
-        id: 1,
-        category: "Supply School",
-        productName: "Pencil",
-        amount: 125,
-        price: 0.65,
-        available: "Yes"
-      },
-      {
-        id: 2,
-        category: "Supply School",
-        productName: "Square",
-        amount: 74,
-        price: 2.43,
-        available: "Yes"
-      },
-    ]
-  
-    return (
-      <div id="table-container">
-        <DataTableStyled
-          columns={TableColumns()}
-          data={data}
-          pagination={true}
-          responsive={true}
-          progressPending={SetPendingTime()}
-          className="table"
-        />
-      </div>
+function LoadTable({ data }) {
+  const [pending, setPending] = useState(true);
+  const [rows, setRows] = useState([]);
+  const [filterText, setFilterText] = useState("");
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setRows(data);
+      setPending(false);
+      ShowSearchField();
+    }, 1500);
+
+    return () => clearTimeout(timeout);
+  }, [data]);
+
+  const handleFilter = (e) => {
+    const searchText = e.target.value.toLowerCase();
+    setFilterText(searchText);
+
+    const filteredData = data.filter((item) =>
+      Object.values(item).some((value) => {
+        if (typeof value === "string" || typeof value === "number") {
+          return value.toString().toLowerCase().includes(searchText);
+        } else if (typeof value === "boolean") {
+          return value ? "yes".includes(searchText) : "no".includes(searchText);
+        }
+        return false;
+      })
     );
+
+    setRows(filteredData);
+  };
+
+  return (
+    <div id="table-container">
+      <br />
+      <input
+        id="search_input"
+        className="input is-rounded"
+        type="text"
+        placeholder="Search by product name..."
+        onChange={handleFilter}
+      />
+      <br />
+      <DataTableStyled
+        columns={TableColumns()}
+        data={rows}
+        pagination={true}
+        responsive={true}
+        progressPending={pending}
+        className="table"
+      />
+    </div>
+  );
+}
+
+export default function Table() {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const result = await GetProductsData();
+        setData(result);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
   }
 
-  export default function Table() {
-    return (
-        <LoadTable />
-    )
+  if (!data) {
+    return <div>Error loading data</div>;
   }
+
+  return <LoadTable data={data} />;
+}

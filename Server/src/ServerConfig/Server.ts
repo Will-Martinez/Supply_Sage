@@ -3,6 +3,7 @@ import DatabaseConfig from "../Database/DatabaseConfig";
 import DatabaseConnection from "../Database/DatabaseConnection";
 import ModelsInitializer from "../Database/Models/ModelsInitializer";
 import ProductRoutes from "../API/Routes/ProductRoutes";
+import cors from "cors";
 import 'dotenv/config'
 import { Sequelize } from "sequelize";
 
@@ -33,6 +34,7 @@ export default class Server {
 
     private defineMiddlewares(): void {
         this.server.use(express.json());
+        this.server.use(cors());
         this.server.use(productRoutes.MapRoutes());
     }
 

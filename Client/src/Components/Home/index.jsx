@@ -14,11 +14,11 @@ export default function Home() {
                     <div className="content">
                         <hr></hr>
                         <p>
-                            <h4>Controle de estoque</h4>
+                            <h4>Inventory</h4>
                         </p>
                         <p>
                             <button onClick={RedirectProducts} type="button" className="button is-primary is-rounded is-normal is-outlined">
-                                Acessar
+                                Access
                             </button>
                         </p>
                     </div>
