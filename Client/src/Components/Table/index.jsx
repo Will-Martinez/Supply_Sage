@@ -18,11 +18,6 @@ async function GetProductsData() {
   }
 }
 
-/* function ShowCreateProduct() {
-  const createProduct = document.getElementById("create_product");
-  createProduct.style.display = "block";
-} */
-
 function ShowSearchField() {
   const searchField = document.getElementById("search_input");
   searchField.style.display = "block";

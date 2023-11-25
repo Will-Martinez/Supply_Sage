@@ -1,5 +1,6 @@
 import PostProduct from "../../API/Services/Products/PostProducts";
 import GetCategories from "../../API/Services/Categories/GetCategories";
+import toast from "react-hot-toast";
 
 async function HandleCategories() {
     try {
@@ -32,9 +33,18 @@ async function CreateProduct() {
         }
 
         const result = await PostProduct(productData);
-        console.log("Product data created: ", result);
+        toast.success(`Product ${productNameInput.value} created.`);
+        setTimeout(() => {
+            CloseModal();
+            ClearModal();
+        }, 1000);
+
+        setTimeout(() => {
+            window.location.reload();
+        }, 2000)
     } catch (error) {
-        console.error(error);
+        toast.error(`Failed trying to create product: ${error.message}`);
+        return;
     }
 }
 

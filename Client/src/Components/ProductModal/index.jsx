@@ -1,5 +1,9 @@
 import "./index.css";
 import GetCategories from "../../API/Services/Categories/GetCategories";
+import UpdateProduct from "../../API/Services/Products/UpdateProduct";
+import toast from "react-hot-toast";
+
+var productId;
 
 async function HandleCategories() {
     try {
@@ -9,7 +13,12 @@ async function HandleCategories() {
     }
 }
 
-function CloseModal() {
+function AutoCloseModal() {
+    const productModal = document.getElementById("product_modal");
+    productModal.classList.remove("is-active");
+}
+
+function ManualCloseModal() {
     const productModal = document.getElementById("product_modal");
     const closeModal = document.getElementById("close_modal");
     closeModal.addEventListener("click", () => {
@@ -18,32 +27,46 @@ function CloseModal() {
 }
 
 async function SaveModalChanges() {
-    const selectCategory = document.getElementById("category_input");
-    const productNameInput = document.getElementById("productName_input");
-    const amountInput = document.getElementById("amount_input");
-    const priceInput = document.getElementById("price_input");
-    const availableInput = document.getElementById("available_input");
+    try {
+        console.log("Product id result: ", productId);
+        const selectCategory = document.getElementById("category_input");
+        const productNameInput = document.getElementById("productName_input");
+        const amountInput = document.getElementById("amount_input");
+        const priceInput = document.getElementById("price_input");
+        const availableInput = document.getElementById("available_input");
 
-    const objData = {
-        category: selectCategory.options[selectCategory.selectedIndex].value,
-        productName: productNameInput.value,
-        amount: Number(amountInput.value),
-        price: Number(priceInput.value),
-        available: availableInput.value
+        const objData = {
+            category: selectCategory.options[selectCategory.selectedIndex].value,
+            productName: productNameInput.value,
+            amount: Number(amountInput.value),
+            price: Number(priceInput.value),
+            available: availableInput.value
+        }
+
+        if (objData.available.toLowerCase() == "yes") {
+            objData.available = true
+        } else {
+            objData.available = false;
+        }
+        console.log("Object data result: ", objData);
+        await UpdateProduct(productId, objData);
+        toast.success("Changes saved successfully!");
+        setTimeout(() => {
+            AutoCloseModal();
+        }, 1000)
+        setTimeout(() => {
+            window.location.reload();
+        },2000)
+    } catch (error) {
+        toast.error(`Failed trying to save changes: ${error.message}`);
+        return;
     }
 
-    if (objData.available.toLowerCase() == "yes") {
-        objData.available = true
-    } else {
-        objData.available = false;
-    }
-
-    console.log("ObjectResult: ", objData);
 }
 
 async function DeleteProduct() {
-
-} 
+    
+}
 
 async function SetCategories() {
     const categories = await HandleCategories();
@@ -71,6 +94,7 @@ async function SetCategories() {
 }
 
 export function OpenModal(productName, rowData) {
+    productId = rowData.id;
     const productModal = document.getElementById("product_modal");
     const modalTitle = document.getElementById("modal_title");
 
@@ -118,7 +142,7 @@ export default function ProductModal() {
                 <footer className="modal-card-foot">
                     <button onClick={SaveModalChanges} className="button is-success is-rounded is-outlined">Save changes</button>
                     <button className="button is-danger is-rounded is-outlined">Delete product</button>
-                    <button onClick={CloseModal} className="button is-dark is-rounded" id="close_modal">Close</button>
+                    <button onClick={ManualCloseModal} className="button is-dark is-rounded" id="close_modal">Close</button>
                 </footer>
             </div>
         </div>

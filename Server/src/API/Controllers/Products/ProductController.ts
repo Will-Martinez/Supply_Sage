@@ -5,8 +5,10 @@ import CreateProduct from "../../Services/Products/CreateProduct";
 import ResponseHandler from "../../Helpers/ResponseHandler";
 import ObjectHandler from "../../Helpers/ObjectHandler";
 import GetProducts from "../../Services/Products/GetProducts";
+import UpdateProduct from "../../Services/Products/UpdateProduct";
+import DeleteProduct from "../../Services/Products/DeleteProduct";
 
-interface BodyRequest {
+interface ProductAttr {
     category: string,
     productName: string,
     amount: number,
@@ -18,7 +20,7 @@ export default class ProductController {
 
     private local: string = "[ PRODUCT-CONTROLLER ]"
 
-    public async store(body: BodyRequest, res: Response): Promise<Response> {
+    public async store(body: ProductAttr, res: Response): Promise<Response> {
         try {
             const { category, productName, amount, price, available } = body;
             const product: StationaryProduct = CreateProduct.createProduct(category, productName, amount, price, available);
@@ -78,6 +80,65 @@ export default class ProductController {
             
         } catch (error) {
             console.error(`${this.local} Failed trying to get all products: ${error.message}`);
+            return ResponseHandler.ReturnResponse(
+                "Error",
+                `Internal server error: ${error.message}`,
+                500,
+                null,
+                res
+            );
+        }
+    }
+
+    public async updateProduct(
+        body: ProductAttr,
+        id: number | string,
+        res: Response 
+    ): Promise<Response> {
+        try {
+            const result = await UpdateProduct.update(id, body);
+            console.log("Result updating product: ", result);
+            return ResponseHandler.ReturnResponse(
+                "Success",
+                "Product updated.",
+                200,
+                result,
+                res
+            );
+        } catch (error) {
+            console.error(`${this.local} Failed trying to update product: ${error.message}`);
+            return ResponseHandler.ReturnResponse(
+                "Error",
+                `Internal server error: ${error.message}`,
+                500,
+                null,
+                res
+            );
+        }
+    }
+
+    public async deleteProduct(id: number | string, res: Response): Promise<Response> {
+        try {
+            const result: number = await DeleteProduct.deleteById(id);
+            if (result != 1) {
+                return ResponseHandler.ReturnResponse(
+                    "Error",
+                    "Product not founded to removal.",
+                    404,
+                    null,
+                    res
+                );
+            }
+
+            return ResponseHandler.ReturnResponse(
+                "Success",
+                "Product deleted.",
+                200,
+                null,
+                res
+            );
+        } catch (error) {
+            console.error(`${this.local} Failed trying to delete product: ${error.message}`);
             return ResponseHandler.ReturnResponse(
                 "Error",
                 `Internal server error: ${error.message}`,

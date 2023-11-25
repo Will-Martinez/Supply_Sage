@@ -17,6 +17,14 @@ export default class ProductRoutes {
         this.router.get("/api/products/getProducts", async(req: Request, res: Response) => {
             return await productController.getAll(res);
         });
+
+        this.router.put("/api/products/updateProduct/:id", async (req: Request, res: Response) => {
+            await productController.updateProduct(req.body, req.params.id, res);
+        });
+
+        this.router.delete("/api/products/deleteProduct/:id", async (req: Request, res: Response) => {
+            await productController.deleteProduct(req.params.id, res);
+        });
     }
 
     public MapRoutes(): Router {

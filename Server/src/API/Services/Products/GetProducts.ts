@@ -9,4 +9,12 @@ export default class GetProducts {
             throw error;
         }
     }
+
+    static async findProductById(id: number | string): Promise<ProductModel> {
+        try {
+            return await ProductModel.findByPk(id);
+        } catch (error) {
+            throw error;
+        }
+    }
 }
