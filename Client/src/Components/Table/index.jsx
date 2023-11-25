@@ -3,7 +3,7 @@ import styled from "styled-components";
 import React, { useState, useEffect } from "react";
 import GetProducts from "../../API/Services/Products/GetProducts";
 import ProductModal, { OpenModal } from "../ProductModal";
-import CreateModal, { OpenCrateModal } from "../CreateModal";
+import CreateModal, { OpenCreateModal } from "../CreateModal";
 import "./index.css";
 
 const DataTableStyled = styled(DataTable)("");
@@ -156,8 +156,13 @@ function LoadTable({ data }) {
         progressPending={pending}
         className="table"
       />
-      <button type="button" className="button is-primary is-rounded is-outlined" id="create_product">Register Product</button>
+      <button type="button"
+        className="button is-primary is-rounded is-outlined"
+        id="create_product"
+        onClick={OpenCreateModal}>
+        Register Product</button>
       <ProductModal />
+      <CreateModal />
     </div>
   );
 }
@@ -188,10 +193,10 @@ export default function Table() {
           columns={NoDataColumns()}
           className="table"
         />
-        <button type="button" 
-        className="button is-primary is-rounded is-outlined" 
-        id="create_product"
-        onClick={OpenCrateModal}>
+        <button type="button"
+          className="button is-primary is-rounded is-outlined"
+          id="create_product"
+          onClick={OpenCreateModal}>
           Register Product
         </button>
         <CreateModal />

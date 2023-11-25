@@ -1,4 +1,13 @@
 import PostProduct from "../../API/Services/Products/PostProducts";
+import GetCategories from "../../API/Services/Categories/GetCategories";
+
+async function HandleCategories() {
+    try {
+        return await GetCategories();
+    } catch (error) {
+        console.error(`Error fetching data: ${error.message}`);
+    }
+}
 
 async function CreateProduct() {
     try {
@@ -48,9 +57,30 @@ function CloseModal() {
     ClearModal();
 }
 
-export function OpenCrateModal() {
+export async function OpenCreateModal() {
     const createModal = document.getElementById("create_modal");
     createModal.classList.add("is-active");
+
+    const categories = await HandleCategories();
+    const categoryNames = categories.data.objectResult;
+    const selectCategory = document.getElementById("select_category");
+
+    selectCategory.innerHTML = "";
+
+    const selectElement = document.createElement("div");
+    selectElement.className = "select is-rounded";
+
+    const selectControl = document.createElement("select");
+    selectControl.id = "category_input";
+
+    categoryNames.forEach(category => {
+        const optionElement = document.createElement("option");
+        optionElement.value = category.name;
+        optionElement.textContent = category.name;
+        selectControl.appendChild(optionElement);
+    });
+    selectElement.appendChild(selectControl);
+    selectCategory.appendChild(selectElement);
 }
 
 export default function CreateModal() {
@@ -63,8 +93,8 @@ export default function CreateModal() {
                 </header>
                 <section className="modal-card-body" id="modal_body">
                     <label className="label">Category</label>
-                    <div className="select">
-                        
+                    <div id="select_category">
+
                     </div>
                     <br></br>
                     <label className="label">Product Name</label>

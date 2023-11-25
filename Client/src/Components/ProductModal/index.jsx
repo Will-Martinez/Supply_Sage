@@ -1,4 +1,13 @@
 import "./index.css";
+import GetCategories from "../../API/Services/Categories/GetCategories";
+
+async function HandleCategories() {
+    try {
+        return await GetCategories();
+    } catch (error) {
+        console.error(`Error fetching data: ${error.message}`);
+    }
+}
 
 function CloseModal() {
     const productModal = document.getElementById("product_modal");
@@ -8,8 +17,60 @@ function CloseModal() {
     })
 }
 
+async function SaveModalChanges() {
+    const selectCategory = document.getElementById("category_input");
+    const productNameInput = document.getElementById("productName_input");
+    const amountInput = document.getElementById("amount_input");
+    const priceInput = document.getElementById("price_input");
+    const availableInput = document.getElementById("available_input");
+
+    const objData = {
+        category: selectCategory.options[selectCategory.selectedIndex].value,
+        productName: productNameInput.value,
+        amount: Number(amountInput.value),
+        price: Number(priceInput.value),
+        available: availableInput.value
+    }
+
+    if (objData.available.toLowerCase() == "yes") {
+        objData.available = true
+    } else {
+        objData.available = false;
+    }
+
+    console.log("ObjectResult: ", objData);
+}
+
+async function DeleteProduct() {
+
+} 
+
+async function SetCategories() {
+    const categories = await HandleCategories();
+    const categoryNames = categories.data.objectResult;
+    const selectCategory = document.getElementById("modal_body");
+    const selectLabel = document.createElement("label");
+    selectLabel.className = "label";
+    selectLabel.textContent = "Category";
+    selectCategory.appendChild(selectLabel);
+
+    const selectElement = document.createElement("div");
+    selectElement.className = "select is-rounded";
+
+    const selectControl = document.createElement("select");
+    selectControl.id = "category_input";
+
+    categoryNames.forEach(category => {
+        const optionElement = document.createElement("option");
+        optionElement.value = category.name;
+        optionElement.textContent = category.name;
+        selectControl.appendChild(optionElement);
+    });
+    selectElement.appendChild(selectControl);
+    selectCategory.appendChild(selectElement);
+}
+
 export function OpenModal(productName, rowData) {
-    console.log("Row Data: ", rowData);
     const productModal = document.getElementById("product_modal");
     const modalTitle = document.getElementById("modal_title");
 
@@ -19,16 +80,18 @@ export function OpenModal(productName, rowData) {
     const modalBody = document.getElementById("modal_body");
     modalBody.innerHTML = "";
 
+    SetCategories();
+
     Object.entries(rowData).forEach(([key, value]) => {
-        if (key == "id") {
-            return;
-        }
+        if (key == "id" || key == "category") return;
+
         const label = document.createElement("label");
         label.textContent = key.charAt(0).toUpperCase() + key.slice(1);
         if (label.textContent == "ProductName") label.textContent = "Product Name";
         label.className = "label";
 
         const input = document.createElement("input");
+        input.id = `${key}_input`
         if (value == true) value = "Yes";
         if (value == false) value = "No";
         input.value = value;
@@ -41,7 +104,7 @@ export function OpenModal(productName, rowData) {
     });
 }
 
-export default function ProductModal({ data }) {
+export default function ProductModal() {
     return (
         <div className="modal" id="product_modal">
             <div className="modal-background"></div>
@@ -50,9 +113,10 @@ export default function ProductModal({ data }) {
                     <p className="modal-card-title" id="modal_title"></p>
                 </header>
                 <section className="modal-card-body" id="modal_body">
+
                 </section>
                 <footer className="modal-card-foot">
-                    <button className="button is-success is-rounded is-outlined">Save changes</button>
+                    <button onClick={SaveModalChanges} className="button is-success is-rounded is-outlined">Save changes</button>
                     <button className="button is-danger is-rounded is-outlined">Delete product</button>
                     <button onClick={CloseModal} className="button is-dark is-rounded" id="close_modal">Close</button>
                 </footer>
