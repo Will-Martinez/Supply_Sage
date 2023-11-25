@@ -1,0 +1,90 @@
+import PostProduct from "../../API/Services/Products/PostProducts";
+
+async function CreateProduct() {
+    try {
+        const categoryInput = document.getElementById("category_input");
+        const productNameInput = document.getElementById("productName_input");
+        const amountInput = document.getElementById("amount_input");
+        const priceInput = document.getElementById("price_input");
+        const availableInput = document.getElementById("available_input");
+
+        const productData = {
+            category: categoryInput.value,
+            productName: productNameInput.value,
+            amount: Number(amountInput.value),
+            price: Number(priceInput.value),
+            available: availableInput.value
+        }
+
+        if (productData.available.toLowerCase() == "yes") {
+            productData.available = true
+        } else {
+            productData.available = false;
+        }
+
+        const result = await PostProduct(productData);
+        console.log("Product data created: ", result);
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+function ClearModal() {
+    const categoryInput = document.getElementById("category_input");
+    const productNameInput = document.getElementById("productName_input");
+    const amountInput = document.getElementById("amount_input");
+    const priceInput = document.getElementById("price_input");
+    const availableInput = document.getElementById("available_input");
+    categoryInput.value = "";
+    productNameInput.value = "";
+    amountInput.value = "";
+    priceInput.value = "";
+    availableInput.value = "";
+}
+
+function CloseModal() {
+    const createModal = document.getElementById("create_modal");
+    createModal.classList.remove("is-active");
+    ClearModal();
+}
+
+export function OpenCrateModal() {
+    const createModal = document.getElementById("create_modal");
+    createModal.classList.add("is-active");
+}
+
+export default function CreateModal() {
+    return (
+        <div className="modal" id="create_modal">
+            <div className="modal-background"></div>
+            <div className="modal-card">
+                <header className="modal-card-head">
+                    <p className="modal-card-title" id="modal_title">Create Product</p>
+                </header>
+                <section className="modal-card-body" id="modal_body">
+                    <label className="label">Category</label>
+                    <div className="select">
+                        
+                    </div>
+                    <br></br>
+                    <label className="label">Product Name</label>
+                    <input className="input is-rounded" id="productName_input"></input>
+                    <br></br>
+                    <label className="label">Amount</label>
+                    <input className="input is-rounded" id="amount_input"></input>
+                    <br></br>
+                    <label className="label">Price</label>
+                    <input className="input is-rounded" id="price_input"></input>
+                    <br></br>
+                    <label className="label">Availabe</label>
+                    <input className="input is-rounded" id="available_input"></input>
+                    <br></br>
+                </section>
+                <footer className="modal-card-foot">
+                    <button className="button is-success is-rounded is-outlined" onClick={CreateProduct}>Create</button>
+                    <button onClick={CloseModal} className="button is-dark is-rounded" id="close_modal">Close</button>
+                </footer>
+            </div>
+        </div>
+    );
+}

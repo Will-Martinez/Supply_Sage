@@ -1,4 +1,5 @@
 import { ProductModelInitializer } from "./Entities/Products/Products";
+import { CategoryModelInitializer } from "./Entities/Categories/Categories";
 import { Sequelize } from "sequelize";
 
 export default class ModelsInitializer {
@@ -11,6 +12,7 @@ export default class ModelsInitializer {
 
     private initialize(): void {
         ProductModelInitializer.initializeProductModel(this.sequelizeClient);
+        CategoryModelInitializer.initializeCategoryModel(this.sequelizeClient);
     }
 
     public initializeModels(): void {

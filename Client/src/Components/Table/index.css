@@ -8,3 +8,11 @@
     display: none;
     width: 15rem;
 }
+
+#no_data_display {
+    display: grid;
+}
+
+/* #create_product {
+    display: none;
+} */

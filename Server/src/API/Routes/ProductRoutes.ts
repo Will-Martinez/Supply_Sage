@@ -10,7 +10,7 @@ export default class ProductRoutes {
 
     private DefineRoutes(): void {
 
-        this.router.post("/api/products", async(req: Request, res: Response) => {
+        this.router.post("/api/products/createProducts", async(req: Request, res: Response) => {
             await productController.store(req.body, res);
         });
 

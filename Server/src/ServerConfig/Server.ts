@@ -3,11 +3,13 @@ import DatabaseConfig from "../Database/DatabaseConfig";
 import DatabaseConnection from "../Database/DatabaseConnection";
 import ModelsInitializer from "../Database/Models/ModelsInitializer";
 import ProductRoutes from "../API/Routes/ProductRoutes";
+import CategoriesRoutes from "../API/Routes/CategoriesRoutes";
 import cors from "cors";
 import 'dotenv/config'
 import { Sequelize } from "sequelize";
 
 const productRoutes: ProductRoutes = new ProductRoutes();
+const categoriesRoutes: CategoriesRoutes = new CategoriesRoutes();
 
 export default class Server {
 
@@ -36,6 +38,7 @@ export default class Server {
         this.server.use(express.json());
         this.server.use(cors());
         this.server.use(productRoutes.MapRoutes());
+        this.server.use(categoriesRoutes.MapRoutes());
     }
 
     private openServer(): void {

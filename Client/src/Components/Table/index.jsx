@@ -1,21 +1,12 @@
 import DataTable from "react-data-table-component";
 import styled from "styled-components";
 import React, { useState, useEffect } from "react";
-import GetProducts from "../API/Services/Products/GetProducts";
-import ProductModal from "../ProductModal";
+import GetProducts from "../../API/Services/Products/GetProducts";
+import ProductModal, { OpenModal } from "../ProductModal";
+import CreateModal, { OpenCrateModal } from "../CreateModal";
 import "./index.css";
 
 const DataTableStyled = styled(DataTable)("");
-
-function ShowRowData(row) {
-  console.log("Row data: ", row);
-}
-
-function ShowModal () {
-  return (
-    <ProductModal />
-  )
-}
 
 async function GetProductsData() {
   try {
@@ -26,6 +17,11 @@ async function GetProductsData() {
     throw error;
   }
 }
+
+/* function ShowCreateProduct() {
+  const createProduct = document.getElementById("create_product");
+  createProduct.style.display = "block";
+} */
 
 function ShowSearchField() {
   const searchField = document.getElementById("search_input");
@@ -39,7 +35,7 @@ function TableColumns() {
         <div className="buttons">
           <button
             className="button is-primary is-rounded is-small is-outlined"
-            onClick={() => ShowRowData(row)}
+            onClick={() => OpenModal(row.productName, row)}
           >
             Action
           </button>
@@ -49,6 +45,36 @@ function TableColumns() {
       allowOverflow: true,
       button: true,
     },
+    {
+      name: "Category",
+      selector: (row) => row.category,
+      sortable: true,
+    },
+    {
+      name: "Product Name",
+      selector: (row) => row.productName,
+      sortable: true,
+    },
+    {
+      name: "Amount",
+      selector: (row) => row.amount,
+      sortable: true,
+    },
+    {
+      name: "Price",
+      selector: (row) => row.price,
+      sortable: true,
+    },
+    {
+      name: "Available",
+      selector: (row) => (row.available ? "Yes" : "No"),
+      sortable: true,
+    },
+  ];
+}
+
+function NoDataColumns() {
+  return [
     {
       name: "Category",
       selector: (row) => row.category,
@@ -87,6 +113,7 @@ function LoadTable({ data }) {
       setRows(data);
       setPending(false);
       ShowSearchField();
+      // ShowCreateProduct();
     }, 1500);
 
     return () => clearTimeout(timeout);
@@ -117,7 +144,7 @@ function LoadTable({ data }) {
         id="search_input"
         className="input is-rounded"
         type="text"
-        placeholder="Search by product name..."
+        placeholder="Search..."
         onChange={handleFilter}
       />
       <br />
@@ -129,6 +156,8 @@ function LoadTable({ data }) {
         progressPending={pending}
         className="table"
       />
+      <button type="button" className="button is-primary is-rounded is-outlined" id="create_product">Register Product</button>
+      <ProductModal />
     </div>
   );
 }
@@ -152,12 +181,22 @@ export default function Table() {
     fetchData();
   }, []);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
   if (!data) {
-    return <div>Error loading data</div>;
+    return (
+      <div id="table-container">
+        <DataTableStyled
+          columns={NoDataColumns()}
+          className="table"
+        />
+        <button type="button" 
+        className="button is-primary is-rounded is-outlined" 
+        id="create_product"
+        onClick={OpenCrateModal}>
+          Register Product
+        </button>
+        <CreateModal />
+      </div>
+    )
   }
 
   return <LoadTable data={data} />;
