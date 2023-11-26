@@ -16,7 +16,7 @@ Aplicação web usada para controle de estoque de uma papelaria. Para esse proje
 ## Tecnologias utilizadas
 
 - Aplicação construída usando requisições somente http por conta de praticidade.
-- Utilizado no back-end Nodejs e Typescript na versão 20.9.0 e como base de dados o PostgreSQL na versão 16
+- Utilizado no back-end Nodejs na versão 20.9.0 e Typescript para o uso de POO. como base de dados o PostgreSQL na versão 16
   - Links para instalação de ambos ( https://nodejs.org/en/download, https://www.postgresql.org/download/ )
 - Utilizado no front-end React e Vite em sua versão 5.0
 
