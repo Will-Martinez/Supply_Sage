@@ -8,7 +8,6 @@ export default async function PostProduct(productData) {
             }
         });
     } catch (error) {
-        console.error(`Failed trying to create a new product: ${error.message}`);
-        return;
+        throw error;
     }
 }
