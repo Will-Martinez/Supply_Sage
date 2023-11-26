@@ -2,7 +2,7 @@ import SchoolSupply from "../ConcreteImplementations/SchoolSupply";
 import StationaryProduct from "../Interfaces/StationaryProduct";
 import StationaryFactory from "../Interfaces/StationaryFactory";
 
-export default class SchoolSupplyFactory extends StationaryFactory {
+export default class SchoolSupplyFactory implements StationaryFactory {
     public createProduct(
         category: string,
         productName: string,

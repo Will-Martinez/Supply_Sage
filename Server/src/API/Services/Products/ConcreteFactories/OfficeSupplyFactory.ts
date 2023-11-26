@@ -2,7 +2,7 @@ import OfficeSupply from "../ConcreteImplementations/OfficeSupply";
 import StationaryFactory from "../Interfaces/StationaryFactory";
 import StationaryProduct from "../Interfaces/StationaryProduct";
 
-export default class OfficeSupplyFactory extends StationaryFactory {
+export default class OfficeSupplyFactory implements StationaryFactory {
     
     public createProduct(
         category: string,

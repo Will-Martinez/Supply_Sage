@@ -2,7 +2,7 @@ import WritingCorrection from "../ConcreteImplementations/WritingCorrection";
 import StationaryProduct from "../Interfaces/StationaryProduct";
 import StationaryFactory from "../Interfaces/StationaryFactory";
 
-export default class WritingCorrectionFactory extends StationaryFactory {
+export default class WritingCorrectionFactory implements StationaryFactory {
 
     createProduct(
         category: string,

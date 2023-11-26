@@ -2,7 +2,7 @@ import ArtsCraft from "../ConcreteImplementations/ArtsCraft";
 import StationaryProduct from "../Interfaces/StationaryProduct";
 import StationaryFactory from "../Interfaces/StationaryFactory";
 
-export default class ArtsCraftFactory extends StationaryFactory {
+export default class ArtsCraftFactory implements StationaryFactory {
 
     public createProduct(
         category: string,

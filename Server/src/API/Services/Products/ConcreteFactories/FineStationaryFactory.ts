@@ -2,7 +2,7 @@ import FineStationary from "../ConcreteImplementations/FineStationary";
 import StationaryFactory from "../Interfaces/StationaryFactory";
 import StationaryProduct from "../Interfaces/StationaryProduct";
 
-export default class FineStationaryFactory extends StationaryFactory {
+export default class FineStationaryFactory implements StationaryFactory {
 
     createProduct(
         category: string,
