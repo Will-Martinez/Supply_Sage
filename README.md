@@ -294,16 +294,16 @@ Deleta um produto da base de dados pelo seu id.
 **Parâmetros**
 
 | Nome | Tipo     | Descrição                                        |
-|------|-------------------------------------------------------------|
+|------|----------|--------------------------------------------------|
 | id   | number   |  Deleta um produto da base de dados pelo seu id. |
 
 **Resposta**
 
-| Código | Descrição                    |
-|--------|------------------------------|
-| 200    | Product deleted.|
+| Código | Descrição                       |
+|--------|---------------------------------|
+| 200    | Product deleted.                |
 | 400    | Product not founded to removal..|
-| 500    | Internal server error.|
+| 500    | Internal server error.          |
 
 **Exemplo de resposta**
 
