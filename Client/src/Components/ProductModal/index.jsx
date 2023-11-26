@@ -14,7 +14,7 @@ async function HandleCategories() {
     try {
         return await GetCategories();
     } catch (error) {
-        console.error(`Error fetching data: ${error.message}`);
+        toast.error(`Failed trying to handle categories: ${error.message}`);
     }
 }
 
@@ -33,7 +33,6 @@ function ManualCloseModal() {
 
 async function SaveModalChanges() {
     try {
-        console.log("Product id result: ", productId);
         const selectCategory = document.getElementById("category_input");
         const productNameInput = document.getElementById("productName_input");
         const amountInput = document.getElementById("amount_input");
@@ -53,7 +52,6 @@ async function SaveModalChanges() {
         } else {
             objData.available = false;
         }
-        console.log("Object data result: ", objData);
         await UpdateProduct(productId, objData);
         toast.success("Changes saved successfully!");
         setTimeout(() => {

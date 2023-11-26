@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import GetProducts from "../../API/Services/Products/GetProducts";
 import ProductModal, { OpenModal } from "../ProductModal";
 import CreateModal, { OpenCreateModal } from "../CreateModal";
+import toast from "react-hot-toast";
 import "./index.css";
 
 const DataTableStyled = styled(DataTable)("");
@@ -13,8 +14,8 @@ async function GetProductsData() {
     const response = await GetProducts();
     return response.data.objectResult;
   } catch (error) {
-    console.error(error);
-    throw error;
+    toast.error(`Failed trying to get products: ${error.message}`);
+    return;
   }
 }
 
