@@ -327,7 +327,7 @@ Retorna as categorias de produtos cadastradas na base de dados.
 **Parâmetros**
 
 | Nome   | Tipo     | Descrição                            |
-|--------|-------------------------------------------------|
+|--------|----------|--------------------------------------|
 | nenhum | nenhum   |  Retorna as categorias dos produtos. |
 
 **Resposta**
