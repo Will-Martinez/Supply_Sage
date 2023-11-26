@@ -188,7 +188,7 @@ export default class CreateProduct {
         }
     }
 
-    public create(
+    public define(
         category: string,
         productName: string,
         amount: number,
@@ -204,5 +204,4 @@ export default class CreateProduct {
         );
         return productCreation[category];
     }
-
 }
