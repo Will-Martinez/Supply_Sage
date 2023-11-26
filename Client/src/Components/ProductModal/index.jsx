@@ -1,9 +1,14 @@
 import "./index.css";
 import GetCategories from "../../API/Services/Categories/GetCategories";
 import UpdateProduct from "../../API/Services/Products/UpdateProduct";
+import ConfirmModal, { OpenConfirmModal } from "../ConfirmModal";
 import toast from "react-hot-toast";
 
 var productId;
+
+function HandleOpenConfirmModal() {
+    OpenConfirmModal(productId)
+}
 
 async function HandleCategories() {
     try {
@@ -62,10 +67,6 @@ async function SaveModalChanges() {
         return;
     }
 
-}
-
-async function DeleteProduct() {
-    
 }
 
 async function SetCategories() {
@@ -141,10 +142,11 @@ export default function ProductModal() {
                 </section>
                 <footer className="modal-card-foot">
                     <button onClick={SaveModalChanges} className="button is-success is-rounded is-outlined">Save changes</button>
-                    <button className="button is-danger is-rounded is-outlined">Delete product</button>
+                    <button onClick={HandleOpenConfirmModal} className="button is-danger is-rounded is-outlined">Delete product</button>
                     <button onClick={ManualCloseModal} className="button is-dark is-rounded" id="close_modal">Close</button>
                 </footer>
             </div>
+            <ConfirmModal />
         </div>
     );
 }
