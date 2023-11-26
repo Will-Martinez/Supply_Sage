@@ -8,10 +8,10 @@ Aplicação web usada para controle de estoque de uma papelaria.
   acesse o diretório Client e rode o comando "npm run dev". Prints abaixo exemplificando as instruções:
 
   - Server
-  ![image](./prints/Server_Terminal.PNG)
+  ![image](./Prints/Server_Terminal.PNG)
 
   - Client
-  ![image](./prints/Client_Terminal.PNG)
+  ![image](./Prints/Client_Terminal.PNG)
 
 ## Tecnologias utilizadas
 
@@ -26,7 +26,7 @@ Aplicação web usada para controle de estoque de uma papelaria.
 - Configurar um arquivo .env conforme mostra o print abaixo, ou modificar a classe que retorna a configuração de conexão com o banco.
 
   - arquivo .env de exemplo:
-  ![image](./prints/enviroment.PNG)
+  ![image](./Prints/enviroment.PNG)
 
 ## Funcionamento da aplicação
 - Criado no React rotas de Home e Products, conforme mostra nos prints abaixo.
@@ -36,20 +36,20 @@ Aplicação web usada para controle de estoque de uma papelaria.
   controlar número de cadastros por página, cadastrar novos produtos, atualizar produtos e deletar produtos.
   
   - Página Home
-  ![image](./prints/Home_Page.PNG)
+  ![image](./Prints/Home_Page.PNG)
 
   - Página Products:
-  ![image](./prints/Products_Page.PNG)
+  ![image](./Prints/Products_Page.PNG)
 
   - Exemplo de cadastro de um produto:
-  ![image](./prints/Create_Example.PNG)
+  ![image](./Prints/Create_Example.PNG)
 
   - Exemplo de remoção de um produto:
-  ![image](./prints/Delete_Example.PNG)
+  ![image](./Prints/Delete_Example.PNG)
 
   - Exemplo de filtro:
-  ![image](./prints/Filter_Example.PNG)
+  ![image](./Prints/Filter_Example.PNG)
 
   Exemplo de dados mostrados por modal ao clicar em action de cada linha: 
-  ![image](./prints/Action_Example.PNG)
+  ![image](./Prints/Action_Example.PNG)
 
