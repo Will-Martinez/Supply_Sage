@@ -375,12 +375,18 @@ Retorna as categorias de produtos cadastradas na base de dados.
 
 ## Como funciona o serviço de criação de produto
 
-- Ao definir o serviço de criação de produtos, foram levantados os seguintes aspectos para a implementação: 
-  - garantir que os produtos criados sejam consistentes entre si.
-  - isolar o cliente das classes concretas, permitindo que ele use apenas interfaces.
+Ao projetar o serviço de criação de produtos, priorizamos dois aspectos-chave para garantir uma implementação eficaz:
 
-- Sendo assim, foi utilizado o padrão Abstract Factory Method para separar a implementação concreta dos objetos retornados pelas fábricas concretas.
-  Para definir qual fábrica concreta utilizar e ter acesso ao método abstrato de criação, foi usado o padrão factory method. abaixo mostra um diagrama explicando
-  melhor o funcionamento do serviço.
+Consistência entre Produtos:
+Assegurar que os produtos criados pelo serviço sejam consistentes entre si, mantendo uma estrutura coesa e compatível dentro de cada categoria.
 
-aqui vai o print
+Isolamento do Cliente:
+Isolar o cliente das classes concretas, proporcionando a utilização apenas das interfaces pertinentes. Isso visa simplificar a interação do cliente com o serviço, reduzindo a dependência de implementações específicas.
+
+Para atender a esses requisitos, foi utilizado o padrão Abstract Factory Method. Esse padrão proporciona uma maneira de criar famílias de objetos relacionados sem especificar suas classes concretas. A separação entre as fábricas concretas e os objetos produzidos permite uma flexibilidade significativa no design.
+
+Adicionalmente, para determinar qual fábrica concreta utilizar e acessar o método abstrato de criação, incorporamos o Factory Method Pattern. Isso permite que o cliente defina dinamicamente a fábrica a ser utilizada, oferecendo uma abordagem modular e extensível.
+
+diagrama em UML das classes ilustrando o funcionamento do serviço:
+
+![image](./Prints/Create_Product_Service.PNG)
