@@ -375,7 +375,7 @@ Retorna as categorias de produtos cadastradas na base de dados.
 
 ## Como funciona o serviço de criação de produto
 
-Ao projetar o serviço de criação de produtos, priorizamos dois aspectos-chave para garantir uma implementação eficaz:
+Ao projetar o serviço de criação de produtos, foram priorizados dois aspectos-chave para garantir uma implementação eficaz:
 
 Consistência entre Produtos:
 Assegurar que os produtos criados pelo serviço sejam consistentes entre si, mantendo uma estrutura coesa e compatível dentro de cada categoria.
