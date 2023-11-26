@@ -30,7 +30,6 @@ Aplicação web usada para controle de estoque de uma papelaria. Para esse proje
 
 ## Funcionamento da aplicação
 - Criado no React rotas de Home e Products, conforme mostra nos prints abaixo.
-  aqui vai o print de home e products
 - Rota home: Usuário tem acesso aos módulos do sistemas para escolher qual acessar (apenas o de estoque foi implementado, o restante é para exemplificar como seria a interface da aplicação)
 - Rota products: Usuário tem acesso a uma tabela contendo todos os produtos cadastrados. Através dela é possível filtrar por texto, ordenar os dados de forma crescente ou decrescente,
   controlar número de cadastros por página, cadastrar novos produtos, atualizar produtos e deletar produtos.
