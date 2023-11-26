@@ -2,6 +2,7 @@ import "./index.css";
 import imagem from "../../Public/images/Home/supply_control_logo.png"
 import billing from "../../Public/images/Home/billing.png";
 import users from "../../Public/images/Home/user_management.png"
+import Footer from "../Footer/index"
 
 function RedirectProducts() {
     window.location.href = "/products";
@@ -60,6 +61,7 @@ export default function Home() {
                     </div>
                 </div>
             </div>
+            <Footer />
         </div>
     )
 }

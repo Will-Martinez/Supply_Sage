@@ -99,6 +99,7 @@ function NoDataColumns() {
 }
 
 function LoadTable({ data }) {
+  const createProduct = document.getElementById("create_product");
   const [pending, setPending] = useState(true);
   const [rows, setRows] = useState([]);
   const [filterText, setFilterText] = useState("");
@@ -135,6 +136,11 @@ function LoadTable({ data }) {
   return (
     <div id="table-container">
       <br />
+      <button type="button"
+        className="button is-primary is-rounded is-outlined"
+        id="create_product"
+        onClick={OpenCreateModal}>
+        Register Product</button>
       <input
         id="search_input"
         className="input is-rounded"
@@ -142,7 +148,6 @@ function LoadTable({ data }) {
         placeholder="Search..."
         onChange={handleFilter}
       />
-      <br />
       <DataTableStyled
         columns={TableColumns()}
         data={rows}
@@ -151,11 +156,6 @@ function LoadTable({ data }) {
         progressPending={pending}
         className="table"
       />
-      <button type="button"
-        className="button is-primary is-rounded is-outlined"
-        id="create_product"
-        onClick={OpenCreateModal}>
-        Register Product</button>
       <ProductModal />
       <CreateModal />
     </div>
