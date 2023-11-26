@@ -293,8 +293,8 @@ Deleta um produto da base de dados pelo seu id.
 
 **Parâmetros**
 
-| Nome | Tipo     | Descrição                   |
-|------|----------------------------------------|
+| Nome | Tipo     | Descrição                                        |
+|------|-------------------------------------------------------------|
 | id   | number   |  Deleta um produto da base de dados pelo seu id. |
 
 **Resposta**
@@ -326,17 +326,17 @@ Retorna as categorias de produtos cadastradas na base de dados.
 
 **Parâmetros**
 
-| Nome   | Tipo     | Descrição                                        |
-|--------|-------------------------------------------------------------|
+| Nome   | Tipo     | Descrição                            |
+|--------|-------------------------------------------------|
 | nenhum | nenhum   |  Retorna as categorias dos produtos. |
 
 **Resposta**
 
 | Código | Descrição                    |
 |--------|------------------------------|
-| 200    | Categories founded.|
-| 404    | Categories not founded.|
-| 500    | Internal server error.|
+| 200    | Categories founded.          |
+| 404    | Categories not founded.      |
+| 500    | Internal server error.       |
 
 **Exemplo de resposta**
 
