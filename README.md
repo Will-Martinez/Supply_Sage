@@ -372,3 +372,15 @@ Retorna as categorias de produtos cadastradas na base de dados.
 }
 
 ```
+
+## Como funciona o serviço de criação de produto
+
+- Ao definir o serviço de criação de produtos, foram levantados os seguintes aspectos para a implementação: 
+  - garantir que os produtos criados sejam consistentes entre si.
+  - isolar o cliente das classes concretas, permitindo que ele use apenas interfaces.
+
+- Sendo assim, foi utilizado o padrão Abstract Factory Method para separar a implementação concreta dos objetos retornados pelas fábricas concretas.
+  Para definir qual fábrica concreta utilizar e ter acesso ao método abstrato de criação, foi usado o padrão factory method. abaixo mostra um diagrama explicando
+  melhor o funcionamento do serviço.
+
+aqui vai o print
