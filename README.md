@@ -377,11 +377,11 @@ Retorna as categorias de produtos cadastradas na base de dados.
 
 Ao projetar o serviço de criação de produtos, foram priorizados dois aspectos-chave para garantir uma implementação eficaz:
 
-Consistência entre Produtos:
-Assegurar que os produtos criados pelo serviço sejam consistentes entre si, mantendo uma estrutura coesa e compatível dentro de cada categoria.
+- Consistência entre Produtos:
+  Assegurar que os produtos criados pelo serviço sejam consistentes entre si, mantendo uma estrutura coesa e compatível dentro de cada categoria.
 
-Isolamento do Cliente:
-Isolar o cliente das classes concretas, proporcionando a utilização apenas das interfaces pertinentes. Isso visa simplificar a interação do cliente com o serviço, reduzindo a dependência de implementações específicas.
+- Isolamento do Cliente:
+  Isolar o cliente das classes concretas, proporcionando a utilização apenas das interfaces pertinentes. Isso visa simplificar a interação do cliente com o serviço, reduzindo a dependência de implementações específicas.
 
 Para atender a esses requisitos, foi utilizado o padrão Abstract Factory Method. Esse padrão proporciona uma maneira de criar famílias de objetos relacionados sem especificar suas classes concretas. A separação entre as fábricas concretas e os objetos produzidos permite uma flexibilidade significativa no design.
 
