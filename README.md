@@ -385,7 +385,7 @@ Ao projetar o serviço de criação de produtos, foram priorizados dois aspectos
 
 Para atender a esses requisitos, foi utilizado o padrão Abstract Factory Method. Esse padrão proporciona uma maneira de criar famílias de objetos relacionados sem especificar suas classes concretas. A separação entre as fábricas concretas e os objetos produzidos permite uma flexibilidade significativa no design.
 
-Adicionalmente, para determinar qual fábrica concreta utilizar e acessar o método abstrato de criação, incorporamos o Factory Method Pattern. Isso permite que o cliente defina dinamicamente a fábrica a ser utilizada, oferecendo uma abordagem modular e extensível.
+Adicionalmente, para determinar qual fábrica concreta utilizar e acessar o método abstrato de criação, foi incorporado o Factory Method Pattern. Isso permite que o cliente defina dinamicamente a fábrica a ser utilizada, oferecendo uma abordagem modular e extensível.
 
 diagrama em UML das classes ilustrando o funcionamento do serviço:
 
