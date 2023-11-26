@@ -44,7 +44,7 @@ Aplicação web usada para controle de estoque de uma papelaria. Para esse proje
   ![image](./Prints/Create_Example.PNG)
 
   - Exemplo de remoção de um produto:
-  ![image](./Prints/Delete_Example.PNG)
+  ![image](./Prints/Delete_example.PNG)
 
   - Exemplo de filtro:
   ![image](./Prints/Filter_Example.PNG)
