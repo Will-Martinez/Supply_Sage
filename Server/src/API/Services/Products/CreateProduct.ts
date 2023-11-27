@@ -188,7 +188,7 @@ export default class CreateProduct {
         }
     }
 
-    public define(
+    public create(
         category: string,
         productName: string,
         amount: number,
