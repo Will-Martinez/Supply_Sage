@@ -61,7 +61,7 @@ async function SaveModalChanges() {
             window.location.reload();
         },2000)
     } catch (error) {
-        toast.error(`Failed trying to save changes: ${error.message}`);
+        toast.error(`Error: ${error.response.data.message}`);
         return;
     }
 

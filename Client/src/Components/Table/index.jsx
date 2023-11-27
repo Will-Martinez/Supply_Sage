@@ -14,7 +14,7 @@ async function GetProductsData() {
     const response = await GetProducts();
     return response.data.objectResult;
   } catch (error) {
-    toast.error(`Failed trying to get products: ${error.message}`);
+    toast.error(`Error: ${error.response.data.message}`);
     return;
   }
 }

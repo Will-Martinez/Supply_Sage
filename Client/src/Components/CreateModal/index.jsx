@@ -6,7 +6,7 @@ async function HandleCategories() {
     try {
         return await GetCategories();
     } catch (error) {
-        console.error(`Error fetching data: ${error.message}`);
+        console.error(`Error: ${error.response.data.message}`);
     }
 }
 

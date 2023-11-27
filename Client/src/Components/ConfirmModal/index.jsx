@@ -17,7 +17,7 @@ async function HandleDeleteProduct(id) {
         }, 2000);
     } catch (error) {
         const productModal = document.getElementById("product_modal");
-        toast.error(`Failed trying to delete product: ${error.message}`);
+        toast.error(`Error: ${error.response.data.message}`);
         setTimeout(() => {
             CloseConfirmModal();
         }, 1000);
