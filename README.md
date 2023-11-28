@@ -55,6 +55,8 @@ Aplicação web usada para controle de estoque de uma papelaria. Para esse proje
 ### Documentação das API's
 
 - Foram definidos API's com respostas padronizadas como mostram abaixo.
+- Observação: a forma com que as categorias foram cadastradas, foram por meio de comando sql via pgAdmin conforme exemplo abaixo:
+  ![image](./Prints/Create_Categories.PNG)
 
 ## API's de Products
 
