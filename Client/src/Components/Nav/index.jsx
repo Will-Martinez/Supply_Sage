@@ -18,7 +18,7 @@ export default function Nav() {
             <a className="navbar-item" href="/home">
               <img src={business}></img>
             </a>
-            <a className="navbar-item">
+            <a className="navbar-item" href="https://github.com/Will-Martinez/Supply_Sage">
               <strong>Supply Sage System</strong>
             </a>
           </div>
