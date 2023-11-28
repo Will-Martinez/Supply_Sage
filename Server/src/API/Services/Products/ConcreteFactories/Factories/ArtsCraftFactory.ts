@@ -1,6 +1,6 @@
-import ArtsCraft from "../ConcreteImplementations/ArtsCraft";
-import StationaryProduct from "../Interfaces/StationaryProduct";
-import StationaryFactory from "../Interfaces/StationaryFactory";
+import ArtsCraft from "../../ConcreteImplementations/ArtsCraft";
+import StationaryProduct from "../../Interfaces/StationaryProduct";
+import StationaryFactory from "../../Interfaces/StationaryFactory";
 
 export default class ArtsCraftFactory implements StationaryFactory {
 

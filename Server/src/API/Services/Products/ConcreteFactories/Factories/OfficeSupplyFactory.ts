@@ -1,6 +1,6 @@
-import OfficeSupply from "../ConcreteImplementations/OfficeSupply";
-import StationaryFactory from "../Interfaces/StationaryFactory";
-import StationaryProduct from "../Interfaces/StationaryProduct";
+import OfficeSupply from "../../ConcreteImplementations/OfficeSupply";
+import StationaryFactory from "../../Interfaces/StationaryFactory";
+import StationaryProduct from "../../Interfaces/StationaryProduct";
 
 export default class OfficeSupplyFactory implements StationaryFactory {
     

@@ -1,9 +1,9 @@
 import StationaryFactory from "./Interfaces/StationaryFactory";
 import StationaryProduct from "./Interfaces/StationaryProduct";
-import DefineFactory from "./Interfaces/DefineFactory";
+import DefineFactory from "./ConcreteFactories/DefineFactory";
 
 export default class CreateProduct {
-    
+
     static create(
         category: string,
         productName: string,

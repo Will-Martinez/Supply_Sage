@@ -1,6 +1,6 @@
-import TechnicalMaterial from "../ConcreteImplementations/TechnicalMaterial";
-import StationaryFactory from "../Interfaces/StationaryFactory";
-import StationaryProduct from "../Interfaces/StationaryProduct";
+import TechnicalMaterial from "../../ConcreteImplementations/TechnicalMaterial";
+import StationaryFactory from "../../Interfaces/StationaryFactory";
+import StationaryProduct from "../../Interfaces/StationaryProduct";
 
 export default class TechnicalMaterialFactory implements StationaryFactory {
 

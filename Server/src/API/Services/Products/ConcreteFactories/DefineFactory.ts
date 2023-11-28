@@ -1,11 +1,11 @@
-import StationaryFactory from "./StationaryFactory";
-import SchoolSupplyFactory from "../ConcreteFactories/SchoolSupplyFactory";
-import OfficeSupplyFactory from "../ConcreteFactories/OfficeSupplyFactory";
-import ArtsCraftFactory from "../ConcreteFactories/ArtsCraftFactory";
-import TechnicalMaterialFactory from "../ConcreteFactories/TechnicalMaterialFactory";
-import FineStationaryFactory from "../ConcreteFactories/FineStationaryFactory";
-import OrganizationFactory from "../ConcreteFactories/OrganizationFactory";
-import WritingCorrectionFactory from "../ConcreteFactories/WritingCorrectionFactory";
+import StationaryFactory from "../Interfaces/StationaryFactory";
+import SchoolSupplyFactory from "./Factories/SchoolSupplyFactory";
+import OfficeSupplyFactory from "./Factories/OfficeSupplyFactory";
+import ArtsCraftFactory from "./Factories/ArtsCraftFactory";
+import TechnicalMaterialFactory from "./Factories/TechnicalMaterialFactory";
+import FineStationaryFactory from "./Factories/FineStationaryFactory";
+import OrganizationFactory from "./Factories/OrganizationFactory";
+import WritingCorrectionFactory from "./Factories/WritingCorrectionFactory";
 
 export default class DefineFactory {
 

@@ -1,6 +1,6 @@
-import Organization from "../ConcreteImplementations/Organization";
-import StationaryProduct from "../Interfaces/StationaryProduct";
-import StationaryFactory from "../Interfaces/StationaryFactory";
+import Organization from "../../ConcreteImplementations/Organization";
+import StationaryProduct from "../../Interfaces/StationaryProduct";
+import StationaryFactory from "../../Interfaces/StationaryFactory";
 
 export default class OrganizationFactory implements StationaryFactory {
 
