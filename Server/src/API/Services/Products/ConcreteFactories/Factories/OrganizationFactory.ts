@@ -4,7 +4,7 @@ import StationaryFactory from "../../Interfaces/StationaryFactory";
 
 export default class OrganizationFactory implements StationaryFactory {
 
-    public createProduct(
+    public createConcreteProduct(
         category: string,
         productName: string,
         amount: number,

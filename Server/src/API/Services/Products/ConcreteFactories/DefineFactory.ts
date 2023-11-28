@@ -9,7 +9,7 @@ import WritingCorrectionFactory from "./Factories/WritingCorrectionFactory";
 
 export default class DefineFactory {
 
-    private mapCategories(): object {
+    private static mapCategories(): object {
         return {
             "School Supply": new SchoolSupplyFactory(),
             "Office Supply": new OfficeSupplyFactory(),
@@ -21,7 +21,7 @@ export default class DefineFactory {
         }
     }
 
-    public returnConcreteFactory(category: string): StationaryFactory {
+    static returnConcreteFactory(category: string): StationaryFactory {
         const factoriesMap: object = this.mapCategories();
         const concreteFactory: StationaryFactory = factoriesMap[category];
         return concreteFactory;

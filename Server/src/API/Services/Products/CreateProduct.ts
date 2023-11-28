@@ -11,8 +11,7 @@ export default class CreateProduct {
         price: number,
         available: boolean
     ): StationaryProduct {
-        const concreteFactoryDefinition: DefineFactory = new DefineFactory();
-        const concreteFactory: StationaryFactory = concreteFactoryDefinition.returnConcreteFactory(category);
-        return concreteFactory.createProduct(category, productName, amount, price, available);
+        const concreteFactory: StationaryFactory = DefineFactory.returnConcreteFactory(category);
+        return concreteFactory.createConcreteProduct(category, productName, amount, price, available);
     }
 }

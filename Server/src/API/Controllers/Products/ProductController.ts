@@ -1,5 +1,6 @@
 import { ProductModel } from "../../../Database/Models/Entities/Products/Products";
 import { Response } from "express";
+import { IProductAttr } from "./Interfaces/IProductsAttr";
 import StationaryProduct from "../../Services/Products/Interfaces/StationaryProduct";
 import CreateProduct from "../../Services/Products/CreateProduct";
 import ResponseHandler from "../../Helpers/ResponseHandler";
@@ -8,19 +9,11 @@ import GetProducts from "../../Services/Products/GetProducts";
 import UpdateProduct from "../../Services/Products/UpdateProduct";
 import DeleteProduct from "../../Services/Products/DeleteProduct";
 
-interface ProductAttr {
-    category: string,
-    productName: string,
-    amount: number,
-    price: number,
-    available: boolean
-}
-
 export default class ProductController {
 
     private local: string = "[ PRODUCT-CONTROLLER ]"
 
-    public async store(body: ProductAttr, res: Response): Promise<Response> {
+    public async store(body: IProductAttr, res: Response): Promise<Response> {
         try {
             const { category, productName, amount, price, available } = body;
             const product: StationaryProduct = CreateProduct.create(category, productName, amount, price, available);
@@ -93,7 +86,7 @@ export default class ProductController {
     }
 
     public async updateProduct(
-        body: ProductAttr,
+        body: IProductAttr,
         id: number | string,
         res: Response 
     ): Promise<Response> {

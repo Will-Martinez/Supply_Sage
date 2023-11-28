@@ -4,7 +4,7 @@ import StationaryProduct from "../../Interfaces/StationaryProduct";
 
 export default class TechnicalMaterialFactory implements StationaryFactory {
 
-    createProduct(
+    createConcreteProduct(
         category: string,
         productName: string,
         amount: number,

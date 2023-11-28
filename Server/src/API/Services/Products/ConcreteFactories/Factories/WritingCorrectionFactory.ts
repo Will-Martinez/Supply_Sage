@@ -4,7 +4,7 @@ import StationaryFactory from "../../Interfaces/StationaryFactory";
 
 export default class WritingCorrectionFactory implements StationaryFactory {
 
-    createProduct(
+    createConcreteProduct(
         category: string,
         productName: string,
         amount: number,

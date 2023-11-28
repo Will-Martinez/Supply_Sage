@@ -3,7 +3,8 @@ import StationaryProduct from "../../Interfaces/StationaryProduct";
 import StationaryFactory from "../../Interfaces/StationaryFactory";
 
 export default class SchoolSupplyFactory implements StationaryFactory {
-    public createProduct(
+    
+    public createConcreteProduct(
         category: string,
         productName: string,
         amount: number,

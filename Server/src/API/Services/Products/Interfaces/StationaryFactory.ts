@@ -1,5 +1,5 @@
 import StationaryProduct from "./StationaryProduct";
 
 export default abstract class StationaryFactory {
-    abstract createProduct(...args: any[]): StationaryProduct
+    abstract createConcreteProduct(...args: any[]): StationaryProduct
 }

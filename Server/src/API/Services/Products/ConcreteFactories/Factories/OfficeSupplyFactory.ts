@@ -4,7 +4,7 @@ import StationaryProduct from "../../Interfaces/StationaryProduct";
 
 export default class OfficeSupplyFactory implements StationaryFactory {
     
-    public createProduct(
+    public createConcreteProduct(
         category: string,
         productName: string,
         amount: number,
