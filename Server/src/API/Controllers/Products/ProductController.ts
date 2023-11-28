@@ -16,8 +16,6 @@ interface ProductAttr {
     available: boolean
 }
 
-const createProduct: CreateProduct = new CreateProduct();
-
 export default class ProductController {
 
     private local: string = "[ PRODUCT-CONTROLLER ]"
@@ -25,7 +23,9 @@ export default class ProductController {
     public async store(body: ProductAttr, res: Response): Promise<Response> {
         try {
             const { category, productName, amount, price, available } = body;
-            const product: StationaryProduct = createProduct.create(category, productName, amount, price, available);
+            const product: StationaryProduct = CreateProduct.create(category, productName, amount, price, available);
+            console.log("New product objetct created: ", product);
+
             const objectProduct: object = product.toDatabaseObject();
             const result: ProductModel = await ProductModel.create(objectProduct);
             const isResultValid: boolean = ObjectHandler.isObjectNotEmpty(result);
