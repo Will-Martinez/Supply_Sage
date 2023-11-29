@@ -21,9 +21,8 @@ export default class DefineFactory {
         }
     }
 
-    static returnConcreteFactory(category: string): StationaryFactory {
+    public static returnConcreteFactory(category: string): StationaryFactory {
         const factoriesMap: object = this.mapCategories();
-        const concreteFactory: StationaryFactory = factoriesMap[category];
-        return concreteFactory;
+        return factoriesMap[category];
     }
-}
+ }

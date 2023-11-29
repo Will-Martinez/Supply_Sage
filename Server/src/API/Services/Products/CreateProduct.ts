@@ -2,7 +2,7 @@ import StationaryFactory from "./Interfaces/StationaryFactory";
 import StationaryProduct from "./Interfaces/StationaryProduct";
 import DefineFactory from "./ConcreteFactories/DefineFactory";
 
-export default class CreateProduct {
+export default class CreateProduct extends DefineFactory {
 
     static create(
         category: string,
@@ -11,7 +11,13 @@ export default class CreateProduct {
         price: number,
         available: boolean
     ): StationaryProduct {
-        const concreteFactory: StationaryFactory = DefineFactory.returnConcreteFactory(category);
-        return concreteFactory.createConcreteProduct(category, productName, amount, price, available);
+        const concreteFactory: StationaryFactory = this.returnConcreteFactory(category);
+        return concreteFactory.createConcreteProduct(
+            category,
+            productName,
+            amount,
+            price,
+            available
+        );
     }
 }
