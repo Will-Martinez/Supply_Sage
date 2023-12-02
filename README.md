@@ -9,10 +9,23 @@ Aplicação web usada para controle de estoque de uma papelaria. Para esse proje
 - Em seguida execute o comando "npm start" para iniciar o servidor, depois no outro terminal, acesse o diretório Client e rode os mesmos comando, "npm install" seguido de "npm run dev". Abaixo contém alguns
   prints iustrando os passos.
 
-  - Server
+  - Compilando código do Server
+  ![image](./Prints/Building_Server_Side.PNG)
+
+  - Pasta dist gerada
+  ![image](./Prints/Showing_Dist.PNG)
+
+  - Executando migrations(necessário compilar o código do server-side primeiro)
+  ![image](./Prints/Run_Migrations.PNG)
+
+  - Tabelas criadas após executar as migrations
+  ![image](./Prints/Tables_Example.PNG)
+  - Para mais informações sobre o sequelize, acesse a documentação oficial: https://sequelize.org/docs/v6/getting-started/
+
+  - Iniciando o lado do servidor
   ![image](./Prints/Server_Terminal.PNG)
 
-  - Client
+  - Iniciando o lado do cliente
   ![image](./Prints/Client_Terminal.PNG)
 
 ## Tecnologias utilizadas
