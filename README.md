@@ -4,7 +4,7 @@
 Aplicação web usada para controle de estoque de uma papelaria. Para esse projeto, foi feito o uso de programação orientada a objetos no back-end e de padrões de projetos para a criação dos produtos.
 
 ## Como iniciar o projeto
-- Use dois terminais da forma que achar melhor. Navegue até o diretório Server dentro do projeto e rode o comando "npm install" para que todas as dependências de produção e desenvolvimento sejam instaladas. Com todos os devidos pacotes instalados, utilize o comando "npm run build" no terminal dentro do diretório "Server", dessa forma o compilador do typescript vai criar uma pasta chamada dist na raiz do diretório.
+- Use dois terminais da forma que achar melhor. Navegue até o diretório Server dentro do projeto e rode o comando "npm install" para que todas as dependências de produção e desenvolvimento sejam instaladas. Com todos os devidos pacotes instalados, utilize o comando "npm run build" no terminal dentro do diretório "Server", dessa forma o compilador do typescript vai criar uma pasta chamada dist na raiz do diretório "Server".
 - Assim que a pasta dist for criada, rode o comando "npx sequelize-cli db:migrate" para criar as tabelas no banco de dados(caso ainda não tenha feito).
 - Em seguida execute o comando "npm start" para iniciar o servidor, depois no outro terminal, acesse o diretório Client e rode os mesmos comando, "npm install" seguido de "npm run dev". Abaixo contém alguns
   prints iustrando os passos.
