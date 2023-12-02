@@ -12,8 +12,7 @@ Aplicação web usada para controle de estoque de uma papelaria. Para esse proje
   - Compilando código do Server
   ![image](./Prints/Building_Server_Side.PNG)
 
-  - Pasta dist gerada
-    ![image](./Prints/Showing_Dist.PNG)
+  ![image](./Prints/Showing_Dist.PNG)
 
   - Executando migrations(necessário compilar o código do server-side primeiro)
   ![image](./Prints/Run_Migrations.PNG)
